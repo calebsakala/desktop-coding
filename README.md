@@ -5,7 +5,7 @@ A bundle of programs created to make my daily tasks easier.
 
 ## Within:
 
-* WEBSITE OPENER\
+* **WEBSITE OPENER**\
 Once I open my web browser, it's easy to get distracted.
 
 That's why I created *website-opener.ssh*:\
