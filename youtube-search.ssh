@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+program=$0
+userchoice="$@"
+
+if [[ $1 == *"-h"* ]];then
+        echo; echo "USAGE FOR $program."; echo
+        echo "--> Parameters: any valid YouTube search."
+        echo "--> To perform a YouTube search, call '$program < search >'."
+        echo "--> For example, '$program Learning Bash is fun'."
+	echo "--> Double, or single, quotes are not necessary at any point."
+        echo; echo "Happy searching. :)"; echo
+        exit 0
+else
+        if curl --head --silent --fail 'https://www.youtube.com/results?search_query=$userchoice' 1>/dev/null 2>&1;then
+                xdg-open https://www.youtube.com/results?search_query="$userchoice"
+                exit 0
+        else
+                echo; echo "This is not a valid search."; echo;
+                echo "Type './youtube-search.ssh -help' for help."
+                exit 1
+        fi
+fi
+fi
+
