@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+program=$0
+userchoice=$1
+
+if [[ $1 == *"-h"* ]];then
+	echo; echo "USAGE FOR $program"; echo
+ 	echo "--> Params: any valid webpage."
+	echo "--> To open a website, call $program < website >"
+	echo "--> For example, $program google.com."
+	echo "--> Do not include http/https."
+	echo; echo "Happy browsing. :)"; echo
+	exit 0
+else
+	if curl --head --silent --fail https://$userchoice 1>/dev/null 2>&1;then
+		xdg-open https://$userchoice
+		exit 0
+	else
+		echo; echo "This page does not exist."; echo;
+		echo "Make sure you did not include 'http://' or 'https://' in the website call".; echo;
+		exit 1
+	fi
+fi
+fi
