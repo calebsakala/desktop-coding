@@ -1,8 +1,14 @@
 #!/usr/bin/bash
+# this program performs a youtube search from the Linux command line
 
+# the program name is assigned to a variable
 program=$0
+
+# the user's search is assigned to a variable
 userchoice="$@"
 
+# if the program detects that the user may be calling for help, 
+# it displays help messages
 if [[ $1 == *"-h"* ]];then
         echo; echo "USAGE FOR $program."; echo
         echo "--> Parameters: any valid YouTube search."
@@ -12,11 +18,17 @@ if [[ $1 == *"-h"* ]];then
         echo; echo "Happy searching. :)"; echo
         exit 0
 else
-        if curl --head --silent --fail 'https://www.youtube.com/results?search_query=$userchoice' 1>/dev/null 2>&1;then
-                xdg-open https://www.youtube.com/results?search_query="$userchoice"
+        # the program tries to execute the search
+	if curl --head --silent --fail 'https://www.youtube.com/results?search_query=$userchoice';then
+                
+		# if the search is successful, a browser tab is opened and
+		# control is returned to the command line
+		xdg-open 1>/dev/null 2>&1 https://www.youtube.com/results?search_query="$userchoice"
                 exit 0
         else
-                echo; echo "This is not a valid search."; echo;
+                # in the unlikely event that a youtube search leads to an invalid webpage
+		# the following message is displayed
+		echo; echo "This is not a valid search."; echo;
                 echo "Type './youtube-search.ssh -help' for help."
                 exit 1
         fi
