@@ -22,7 +22,9 @@ Once I open YouTube... you guessed it! It's *easy* to get distracted.
 That's why I created *youtube-search.ssh*:\
 A bash script designed to perform any valid YouTube search from the (linux) command line.
 
--> Calling `./youtube-search Learning Bash is Fun` will search 'Learning Bash is Fun' on YouTube.\
--> Calling `./youtube-search 312389.sahuif4` will search '312389.sahuif4' on YouTube (literally a random combination of characters).\
--> Calling `./youtube-search -help` will bring up help options.\
+-> Calling `./youtube-search.ssh Learning Bash is Fun` will search 'Learning Bash is Fun' on YouTube.\
+-> Calling `./youtube-search.ssh 312389.sahuif4` will search '312389.sahuif4' on YouTube (literally a random combination of characters).\
+-> Calling `./youtube-search.ssh -help` will bring up help options.\
 -> In the incredibly unlikely event that your search leads to an invalid page, the program will let you know.
+
+-> Protip: creating an alias makes running the program a lot easier. 
