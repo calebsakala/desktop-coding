@@ -1,21 +1,34 @@
 #!/usr/bin/bash
+# This program takes arguments from the Linux shell
 
+# The name of the program is stored in a variable
 program=$0
+
+# The name of the website the user desires to visit is stored in a variable
 userchoice=$1
 
+# If the program detects the user is trying to ask for help, 
+# help is displayed
 if [[ $1 == *"-h"* ]];then
 	echo; echo "USAGE FOR $program"; echo
- 	echo "--> Params: any valid webpage."
+ 	echo "--> Parameters: any valid webpage."
 	echo "--> To open a website, call $program < website >"
 	echo "--> For example, $program google.com."
 	echo "--> Do not include http/https."
 	echo; echo "Happy browsing. :)"; echo
 	exit 0
 else
-	if curl --head --silent --fail https://$userchoice 1>/dev/null 2>&1;then
-		xdg-open https://$userchoice
+	
+	# If no help call, is detected, it tries to connect to the website
+	if curl --head --silent --fail https://$userchoice;then
+		
+		# if the webpage supplied is valid, it connects, opens the browser, 
+		# and returns control to the command line
+		xdg-open 1>/dev/null 2>&1 https://$userchoice
 		exit 0
 	else
+		# the internet connection attempt is designed to fail silently, so if a silent fail occurs
+		# the message belowis displayed
 		echo; echo "This page does not exist."; echo;
 		echo "Make sure you did not include 'http://' or 'https://' in the website call".; echo;
 		exit 1
