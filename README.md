@@ -27,4 +27,4 @@ A bash script designed to perform any valid YouTube search from the (linux) comm
 -> Calling `./youtube-search.ssh -help` will bring up help options.\
 -> In the incredibly unlikely event that your search leads to an invalid page, the program will let you know.
 
--> Protip: creating an alias makes running the program a lot easier. 
+-> Protip: creating an alias in your /.bashrc file makes running each program a whole lot easier. ;) 
